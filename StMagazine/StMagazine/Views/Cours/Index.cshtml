@@ -1,0 +1,50 @@
+﻿@model StMagazine.ViewModels.CViewModel.CoursViewModel
+@{
+    ViewBag.Title = "Все курсы";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<style>
+    .glyphicon {
+        display: inline-block;
+        padding: 0 5px;
+    }
+
+    .glyphicon-chevron-right:after {
+        content: "\00BB";
+    }
+
+    .glyphicon-chevron-left:before {
+        content: "\00AB";
+    }
+</style>
+<form class="form-inline my-2 my-lg-0">
+    <input name="Number" class="form-control" placeholder="Номер курса" aria-label="Поиск" />
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> Поиск </button>
+</form>
+
+<table class="table">
+    <tr><td>Номер</td></tr>
+    @foreach (var item in Model.Courses)
+    {
+        <tr>
+            <td>@item.CoursNumber</td>
+        </tr>
+    }
+</table>
+<p>
+    @if (Model.PageViewModel.HasPreviousPage)
+    {
+        <a asp-action="Index"
+           asp-route-page="@(Model.PageViewModel.PageNumber - 1)" class="glyphicon glyphicon-chevron-left">
+            Назад
+        </a>
+    }
+    @if (Model.PageViewModel.HasNextPage)
+    {
+        <a asp-action="Index"
+           asp-route-page="@(Model.PageViewModel.PageNumber + 1)" class="glyphicon glyphicon-chevron-right">
+            Вперед
+        </a>
+    }
+</p>

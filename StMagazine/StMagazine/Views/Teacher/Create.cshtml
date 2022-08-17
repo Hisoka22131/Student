@@ -1,0 +1,44 @@
+﻿@using StMagazine.ViewModels;
+@model TeacherCreateViewModel;
+@{
+    ViewBag.Title = "Добавление учителя";
+}
+<form asp-antiforgery="true" asp-action="create" asp-controller="Teacher" method="post" enctype="multipart/form-data">
+    <div class="vaidation" asp-validation-summary="ModelOnly"></div>
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Имя</label>
+        <input type="text" asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Surname" class="control-label">Фамилия</label>
+        <input type="text" asp-for="Surname" class="form-control" />
+        <span asp-validation-for="Surname"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhoneNumber" class="control-label">Номер телефона</label>
+        <input type="text" asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber"></span>
+    </div>
+    <div class="=form-group">
+        <label asp-for="ItemId" class="control-label">Название предмета</label>
+        <select asp-for="ItemId" asp-items="ViewBag.Items"></select>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Photo" class="col-sm-2 col-form-label">Фото учителя</label>
+        <div class="col-sm-10">
+            <div class="custom-file">
+                <input asp-for="Photo" class="form-control custom-file-input" />
+                <label class="custom-file-label">Загрузить файл...</label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="button7" />
+    </div>
+</form>
+@section scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

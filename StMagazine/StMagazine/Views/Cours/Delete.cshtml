@@ -1,0 +1,20 @@
+﻿@model StMagazine.ViewModels.CViewModel.CoursDeleteViewModel
+@{
+    ViewBag.Title = "Удаление курса";
+}
+<div>
+    <dl class="dl-horizontal">
+        <dt>Номер курса</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Number)
+        </dd>
+    </dl>
+
+    <div>
+        <form asp-controller="Cours" asp-action="Delete" method="post">
+            <div class="form-group">
+                <input type="submit" class="button7" value="Удалить" />
+            </div>
+        </form>
+    </div>
+</div>

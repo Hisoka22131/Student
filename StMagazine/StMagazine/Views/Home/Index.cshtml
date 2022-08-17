@@ -1,0 +1,44 @@
+﻿@using StMagazine.Models;
+@{
+    ViewData["Title"] = "Журнал студентов";
+}
+<style>
+    .round {
+        width: 300px;
+        height: auto; /* Ширина и высота */
+        margin: 0 0 0 0 auto;
+        border-radius: 50%; /* Превращаем в круг */
+        background-size: auto 300px; /* Высота фотографии равна высоте элемента */
+    }
+</style>
+<div class="ml-5">
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+        <div class="col-lg-4">
+            <img src="/images/Students.jpg" class="round" />
+            <h2 class="fw-normal">Студенты</h2>
+            <p><a class="btn btn-secondary" href="Student/Index">Подробнее »</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <img src="/images/Teachers.jpg" class="round" />
+            <h2 class="fw-normal">Учителя</h2>
+            <p><a class="btn btn-secondary" href="Teacher/Index">Подробнее »</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <img src="/images/Groups.jpg" class="round" />
+            <h2 class="fw-normal">Группы</h2>
+            <p><a class="btn btn-secondary" href="Group/Index">Подробнее »</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <img src="/images/Courses.jpg" class="round" />
+            <h2 class="fw-normal">Курсы</h2>
+            <p><a class="btn btn-secondary" href="Cours/Index">Подробнее »</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <img src="/images/Items.jpg" class="round" />
+            <h2 class="fw-normal">Предметы</h2>
+            <p><a class="btn btn-secondary" href="Item/Index">Подробнее »</a></p>
+        </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+</div>
+

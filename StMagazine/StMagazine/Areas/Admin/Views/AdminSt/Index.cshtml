@@ -1,0 +1,57 @@
+﻿@model StMagazine.ViewModels.StViewModel.StudentViewModel
+@{
+    ViewBag.Title = "Все студенты";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<style>
+    .glyphicon {
+        display: inline-block;
+        padding: 0 5px;
+    }
+
+    .glyphicon-chevron-right:after {
+        content: "\00BB";
+    }
+
+    .glyphicon-chevron-left:before {
+        content: "\00AB";
+    }
+</style>
+<a class ="btn btn-outline-success my-2 my-sm-0" asp-area="Admin" asp-action="Create" asp-controller="AdminSt">Добавить студента</a>
+<form class="form-inline my-2 my-lg-0">
+    <input name="Name" class="form-control" placeholder="Имя и фамилия" aria-label="Поиск" />
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> Поиск </button>
+</form>
+<table class="table">
+    <tr><td>Имя</td><td>Фамилия</td><td>Номер телефона</td><td>Название группы</td><td>Фото студента</td></tr>
+    @foreach (var item in Model.students)
+    {
+        <tr>
+            @{var photoPath = "~/Images/" + (item.PhotoPath ?? "noimage.png");}
+            <td>@item.Name</td>
+            <td>@item.Surname</td>
+            <td>@item.PhoneNumber</td>
+            <td>@item.Group.GroupName</td>
+            <td><img class="img-thumbnail" src="@photoPath" asp-append-version="true"></td>
+            <td><a class ="btn btn-outline-success my-2 my-sm-0" asp-area="Admin" asp-action="Edit" asp-controller="AdminSt" asp-route-id="@item.Id">Изменить</a></td>
+            <td><a class ="btn btn-outline-success my-2 my-sm-0" asp-area="Admin" asp-action="Delete" asp-controller="AdminSt" asp-route-id="@item.Id">Удалить</a></td>
+        </tr>
+    }
+</table>
+<p>
+    @if (Model.PageViewModel.HasPreviousPage)
+    {
+        <a asp-action="Index"
+           asp-route-page="@(Model.PageViewModel.PageNumber - 1)" class="glyphicon glyphicon-chevron-left">
+            Назад
+        </a>
+    }
+    @if (Model.PageViewModel.HasNextPage)
+    {
+        <a asp-action="Index"
+           asp-route-page="@(Model.PageViewModel.PageNumber + 1)" class="glyphicon glyphicon-chevron-right">
+            Вперед
+        </a>
+    }
+</p>

@@ -1,0 +1,54 @@
+﻿@model StMagazine.ViewModels.IViewModel.ItemListViewModel
+@{
+    ViewBag.Title = "Все предметы";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<style>
+    .glyphicon {
+        display: inline-block;
+        padding: 0 5px;
+    }
+
+    .glyphicon-chevron-right:after {
+        content: "\00BB";
+    }
+
+    .glyphicon-chevron-left:before {
+        content: "\00AB";
+    }
+</style>
+
+<a class="btn btn-outline-success my-2 my-sm-0" asp-area="Admin" asp-controller="AdminItem" asp-action="Create">Добавить предмет</a>
+
+<form class="form-inline my-2 my-lg-0">
+    <input name="Name" class="form-control" placeholder="Название предмета" aria-label="Поиск" />
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> Поиск </button>
+</form>
+<table class="table">
+    <tr><td>Название</td></tr>
+    @foreach (var item in Model.Items)
+    {
+        <tr>
+            <td>@item.ItemName</td>
+            <td><a class="btn btn-outline-success my-2 my-sm-0" asp-area="Admin" asp-action="Edit" asp-controller="AdminItem" asp-route-id="@item.Id">Изменить</a></td>
+            <td><a class="btn btn-outline-success my-2 my-sm-0" asp-area="Admin" asp-action="Delete" asp-controller="AdminItem" asp-route-id="@item.Id">Удалить</a></td>
+        </tr>
+    }
+</table>
+<p>
+    @if (Model.PageViewModel.HasPreviousPage)
+    {
+        <a asp-action="Index"
+           asp-route-page="@(Model.PageViewModel.PageNumber - 1)" class="glyphicon glyphicon-chevron-left">
+            Назад
+        </a>
+    }
+    @if (Model.PageViewModel.HasNextPage)
+    {
+        <a asp-action="Index"
+           asp-route-page="@(Model.PageViewModel.PageNumber + 1)" class="glyphicon glyphicon-chevron-right">
+            Вперед
+        </a>
+    }
+</p>

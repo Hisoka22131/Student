@@ -1,0 +1,35 @@
+﻿@model StMagazine.ViewModels.GVewModel.GroupDeleteViewModel
+@{
+    ViewBag.Title = "Удаление группы";
+}
+<div>
+    <dl class="dl-horizontal">
+        <dt>Имя</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>Фамилия</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+        <dt>Номер телефона</dt>
+        <dd>
+            @Html.DisplayFor(model => model.Speciality)
+        </dd>
+        <dt>Группа</dt>
+        <dd>
+            @Html.DisplayFor(model => model.TeacherId)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.CoursId)
+        </dd>
+    </dl>
+
+    <div>
+        <form asp-area="Admin" asp-controller="Group" asp-action="AdminDelete" method="post">
+            <div class="form-group">
+                <input type="submit" class="button7" value="Удалить" />
+            </div>
+        </form>
+    </div>
+</div>
